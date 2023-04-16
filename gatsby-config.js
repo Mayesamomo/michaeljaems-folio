@@ -1,6 +1,9 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 module.exports = {
   siteMetadata: {
     title: `michaeljaems-folio`,
@@ -9,8 +12,8 @@ module.exports = {
   plugins: [{
     resolve: 'gatsby-source-contentful',
     options: {
-      "accessToken": "ZXghS4YgL4dlIUSov7ahRmlm7daA6mt59YbkoVNXnYk",
-      "spaceId": "jv3k1nrks7dw"
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      spaceId: process.env.CONTENTFUL_SPACE_ID,
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-source-filesystem',
