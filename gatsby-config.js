@@ -7,20 +7,31 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `michaeljaems-folio`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `http://michaeljaems.com/`,
+    description: `Michael A. Momo portfolio site`,
+    author: `@stressedbycodes`,
   },
-  plugins: [{
-    resolve: 'gatsby-source-contentful',
-    options: {
-      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      spaceId: process.env.CONTENTFUL_SPACE_ID,
-    }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+  plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-styled-components",
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+      },
     },
-    __key: "images"
-  }]
+   
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: "./src/images/",
+      },
+      __key: "images",
+    },
+  ],
 };
